@@ -1,0 +1,50 @@
+.header {
+  background-color: $white;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.header-nav {
+  position: relative;
+}
+
+.header-link {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Play", sans-serif;
+  margin: 0 0.25rem;
+  padding: 0.5rem;
+  color: $grey-dark;
+  text-decoration: none;
+  transition: $transition-normal;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 0.85em;
+    width: 100%;
+    border-bottom: 2px solid $grey-dark;
+    margin-top: 10px;
+    opacity: 0;
+    transform: scale(0,1);
+    transition: all 0.4s;
+  }
+
+  &:hover {
+    color: $blue;
+
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+      border-color: $blue;
+    }
+  }
+}
