@@ -1,5 +1,6 @@
 .header {
   background-color: $white;
+  position: relative;
 }
 
 .header-container {
@@ -9,23 +10,18 @@
   height: 80px;
 }
 
-.header-nav {
-  position: relative;
-}
-
 .header-link {
   position: relative;
-  font-size: 1rem;
-  font-weight: 600;
   font-family: "Play", sans-serif;
-  margin: 0 0.25rem;
-  padding: 0.5rem;
+  font-weight: 600;
+  margin: 0 0.75rem;
+  padding: 1.925rem 0;
   color: $grey-dark;
   text-decoration: none;
   transition: $transition-normal;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     display: inline-block;
@@ -34,7 +30,7 @@
     border-bottom: 2px solid $grey-dark;
     margin-top: 10px;
     opacity: 0;
-    transform: scale(0,1);
+    transform: scale(0, 1);
     transition: all 0.4s;
   }
 
@@ -46,5 +42,59 @@
       transform: scale(1);
       border-color: $blue;
     }
+  }
+}
+
+// Find dropdown next to link
+.header-link:hover + .header-dropown {
+  animation-name: dropdown;
+  animation-fill-mode: forwards;
+  animation-duration: 150ms;
+  animation-timing-function: ease-in;
+}
+
+.header-dropown:hover {
+  top: 80px;
+  transform: scale(1, 1);
+}
+
+@keyframes dropdown {
+  0% {
+    top: 80px;
+    transform: scale(1, 0);
+  }
+  100% {
+    top: 80px;
+    transform: scale(1, 1);
+  }
+}
+
+.header-dropown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100vw;
+  min-height: 80px;
+  text-align: center;
+  background-color: $off-black;
+  transform: scale(1, 0);
+  transition: all 0.2;
+  z-index: 5;
+}
+
+.header-dropdown-item {
+  font-family: "Play", sans-serif;
+  font-weight: 600;
+  color: $off-white;
+  padding: 1.95rem;
+  text-decoration: none;
+  transition: $transition-normal;
+
+  &:hover {
+    background-color: $navy;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
   }
 }
